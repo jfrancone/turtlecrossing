@@ -26,11 +26,27 @@ class CarManager:
     def add_car(self):
         # add python time perf_counter
         rand_y = random.choice(CAR_LANES)
-        last_car = self.car_list[-1]
-        if last_car.ycor() == rand_y:
-            rand_y = random.choice(CAR_LANES)
+        for vehicle in self.car_list:
+            if (rand_y == vehicle.ycor()) and (vehicle.xcor() > 250):
+                rand_y2 = random.choice(CAR_LANES)
+                while rand_y2 == rand_y:
+                    rand_y2 = random.choice(CAR_LANES)
+                rand_y = rand_y2
+                # if (rand_y == vehicle.ycor()) and (vehicle.xcor() > 250):
+                #     rand_y = random.choice(CAR_LANES)
+        # last_car = self.car_list[-1]
+        # if last_car.ycor() == rand_y:
+        #     rand_y = random.choice(CAR_LANES)
         car = Car(color=random.choice(COLORS),
                   position=(280, rand_y), speed=CAR_SPEED)
+
+        for vehicle in self.car_list:
+            while car.distance(vehicle.position()) < 5:
+                rand_y = random.choice(CAR_LANES)
+                car.penup()
+                car.position = (280, rand_y)
+                car.pendown()
+
         self.car_list.append(car)
 
     def get_car_position(self):
@@ -41,7 +57,7 @@ class CarManager:
             if car.xcor() < -300:
                 car.reset()
                 self.car_list.remove(car)
-        print(self.car_list)
+        # print(self.car_list)
 
     def lane_checker(self, object):
         pass
@@ -72,7 +88,7 @@ class Car(Turtle):
         self.st()
         self.goto(position)
 
-    def move(self):
+    def move(self, car_move_dist):
         y = self.ycor()
-        new_x = ((self.xcor()) - 10)
+        new_x = ((self.xcor()) - car_move_dist)
         self.goto(new_x, y)

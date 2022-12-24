@@ -17,12 +17,18 @@ background_image = Background_Creator()
 car_manager = CarManager()
 
 game_is_on = True
+scoreboard = Scoreboard()
+loop_count = 0
 while game_is_on:
     # time.sleep(0.1)
     screen.update()
     for car in car_manager.car_list:
         game_is_on = car_manager.collision_manager(player)
         # print(f"game_is_on = {game_is_on}")
-        car.move()
+        car.move(2)
+        car_manager.delete_old_cars()
     car_manager.delete_old_cars()
-    car_manager.add_car()
+    if loop_count >= 10:
+        car_manager.add_car()
+        loop_count = 0
+    loop_count += 1
