@@ -4,6 +4,7 @@ from player import Player
 from car_manager import CarManager, CAR_VELOCITY
 from scoreboard import Scoreboard
 from background_image import Background_Creator
+from level import Level
 
 screen = Screen()
 screen.bgcolor("black")
@@ -17,7 +18,9 @@ background_image = Background_Creator()
 car_manager = CarManager()
 
 game_is_on = True
+level = Level()
 scoreboard = Scoreboard()
+scoreboard.print_level(level.get_level())
 last_time = time.perf_counter()
 time_since_last_car = time.perf_counter()
 while game_is_on:
@@ -28,9 +31,14 @@ while game_is_on:
     for car in car_manager.car_list:
         game_is_on = car_manager.collision_manager(player)
         # print(f"game_is_on = {game_is_on}")
-        car.move(delta_time * CAR_VELOCITY)
+        car.move(delta_time * level.get_car_velocity())
         car_manager.delete_old_cars()
     car_manager.delete_old_cars()
-    if current_time - time_since_last_car > .5:
+    if current_time - time_since_last_car > level.get_car_spawn_period():
         car_manager.add_car()
         time_since_last_car = current_time
+    
+    if player.ycor() >= 235:
+        player.reset()
+        level.increment_level()
+        scoreboard.print_level(level.get_level())

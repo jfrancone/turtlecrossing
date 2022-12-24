@@ -8,18 +8,16 @@ class Scoreboard(Turtle):
 
     def __init__(self):
         super().__init__()
-        self.level = 1
         self.penup()
         self.color('white')
         self.hideturtle()
         self.goto(POSITION)
-        self.print_level()
 
-    def print_level(self):
-        self.write(f'Level: {self.level}', align=ALIGNMENT, font=FONT)
+    def print_level(self, level):
+        self.clear()
+        self.write(f'Level: {level}', align=ALIGNMENT, font=FONT)
 
-    def level_up(self):
-        self.level += 1
+    
 
 
 # write level on top
