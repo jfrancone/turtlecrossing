@@ -7,7 +7,7 @@ STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10  # how much the move speed increases when you level up
 CAR_LANES = [-245, -215, -185, -155, -125, -95, -
              65, -35, -5, 25, 55, 85, 115, 145, 175, 205, 235]
-CAR_SPEED = "slow"
+CAR_VELOCITY = 80
 
 
 class CarManager:
@@ -20,7 +20,7 @@ class CarManager:
         for y_pos in CAR_LANES:
             x = random.randint(-260, 270)
             car = Car(color=random.choice(COLORS),
-                      position=(x, y_pos), speed=CAR_SPEED)
+                      position=(x, y_pos), speed='slow')
             self.car_list.append(car)
 
     def add_car(self):
@@ -38,7 +38,7 @@ class CarManager:
         # if last_car.ycor() == rand_y:
         #     rand_y = random.choice(CAR_LANES)
         car = Car(color=random.choice(COLORS),
-                  position=(280, rand_y), speed=CAR_SPEED)
+                  position=(280, rand_y), speed='slow')
 
         for vehicle in self.car_list:
             while car.distance(vehicle.position()) < 5:
