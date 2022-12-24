@@ -18,10 +18,9 @@ car_manager = CarManager()
 
 game_is_on = True
 scoreboard = Scoreboard()
-loop_count = 0
 last_time = time.perf_counter()
+time_since_last_car = time.perf_counter()
 while game_is_on:
-    # time.sleep(0.1)
     current_time = time.perf_counter()
     delta_time = current_time - last_time
     last_time = current_time
@@ -32,7 +31,6 @@ while game_is_on:
         car.move(delta_time * CAR_VELOCITY)
         car_manager.delete_old_cars()
     car_manager.delete_old_cars()
-    if loop_count >= 10:
+    if current_time - time_since_last_car > .5:
         car_manager.add_car()
-        loop_count = 0
-    loop_count += 1
+        time_since_last_car = current_time
