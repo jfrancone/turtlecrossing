@@ -12,9 +12,10 @@ CAR_VELOCITY = 80
 
 class CarManager:
 
-    def __init__(self):
+    def __init__(self, screen):
         self.car_list = []
         self.create_starting_cars()
+        self.screen = screen
 
     def create_starting_cars(self):
         for y_pos in CAR_LANES:
@@ -57,6 +58,7 @@ class CarManager:
             if car.xcor() < -300:
                 car.reset()
                 self.car_list.remove(car)
+                self.screen.turtles().remove(car)
         # print(self.car_list)
 
     def lane_checker(self, object):

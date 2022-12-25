@@ -15,7 +15,7 @@ player = Player()
 screen.listen()
 screen.onkeypress(player.move, "Up")
 background_image = Background_Creator()
-car_manager = CarManager()
+car_manager = CarManager(screen)
 
 game_is_on = True
 level = Level()
