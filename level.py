@@ -9,6 +9,7 @@ class Level(Turtle):
         self.set_car_velocity()
         self.car_spawn_period = 1
         self.set_car_spawn_period()
+        self.best_score = 0
 
     def increment_level(self):
         self.level += 1

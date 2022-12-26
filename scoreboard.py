@@ -20,9 +20,27 @@ class Scoreboard(Turtle):
     def game_over(self):
         self.goto(-10,0)
         self.color('black')
-        self.write(f'Hit by a car!\n Game Over :(', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "bold"))
+        self.write(f'Hit by a car!😵\n Game Over :(', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "bold"))
         self.color('white')
-        self.write(f'Hit by a car!\n Game Over :(', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "normal"))
+        self.write(f'Hit by a car!😵\n Game Over :(', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "normal"))
+
+    def beat_high_score(self):
+        self.goto(-10, -235)
+        self.color('black')
+        self.write(f'You beat your high score!🏅', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 15, "bold"))
+        self.color('white')
+        self.write(f'You beat your high score!🏅', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 15, "normal"))
+
+    def end_message(self, level):
+        self.goto(POSITION)
+        self.print_level(level)
+        self.goto(0, 0)
+        self.color('black')
+        self.write(f'Play again soon!🐢', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "bold"))
+        self.color('white')
+        self.write(f'Play again soon!🐢', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "normal"))
+
+
 
 
 
