@@ -42,3 +42,7 @@ while game_is_on:
         player.reset()
         level.increment_level()
         scoreboard.print_level(level.get_level())
+
+scoreboard.game_over()
+screen.exitonclick()
+

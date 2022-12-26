@@ -17,6 +17,15 @@ class Scoreboard(Turtle):
         self.clear()
         self.write(f'Level: {level}', align=ALIGNMENT, font=FONT)
 
+    def game_over(self):
+        self.goto(-10,0)
+        self.color('black')
+        self.write(f'Hit by a car!\n Game Over :(', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "bold"))
+        self.color('white')
+        self.write(f'Hit by a car!\n Game Over :(', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 30, "normal"))
+
+
+
     
 
 

@@ -74,7 +74,7 @@ class CarManager:
             distance_y = abs(car_y - player_y)
             #print(f"car_x = {car_x} car_y =  {car_y}\nplayer_x = {player_x} player_y =  {player_y}\ndistance_x = {distance_x} distance_y = {distance_y}")
             if (distance_x < 6) and (distance_y < 6):
-                print("Game over :(")
+                #print("Game over :(")
                 return False
         return True
 
