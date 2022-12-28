@@ -59,6 +59,7 @@ class CarManager:
                 car.reset()
                 self.car_list.remove(car)
                 self.screen.turtles().remove(car)
+            
         # print(self.car_list)
 
     def lane_checker(self, object):
