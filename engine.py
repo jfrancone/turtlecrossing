@@ -51,24 +51,20 @@ class Engine():
         time.sleep(2)
         if self.level.level > self.level.best_score:
             self.level.best_score = self.level.level
-            #scoreboard.beat_high_score()
+            self.scoreboard.beat_high_score()
         
 
     def main_loop(self):
-        #play_again = False
         user_input = 'yes'
         while user_input == 'yes':
             if user_input == 'yes':
-                #self.screen.clear()
                 self.player.reset()
                 self.level.reset()
                 self.scoreboard.print_level(self.level.level)
-                #self.reset_screen()
                 self.run()
                 user_input = self.screen.textinput(title = "One more time?", prompt = "Would you like to play again? Type 'yes' or 'no'").lower()
 
             else:
-                #scoreboard.clear()
                 self.scoreboard.end_message(self.level.level)
 
         self.screen.exitonclick()
