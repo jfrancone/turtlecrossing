@@ -15,6 +15,7 @@ class Scoreboard(Turtle):
 
     def print_level(self, level):
         self.clear()
+        self.goto(POSITION)
         self.write(f'Level: {level}', align=ALIGNMENT, font=FONT)
 
     def game_over(self):

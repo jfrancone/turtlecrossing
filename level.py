@@ -16,6 +16,11 @@ class Level(Turtle):
         self.set_car_spawn_period()
         self.set_car_velocity()
 
+    def reset(self):
+        self.level = 1
+        self.set_car_spawn_period()
+        self.set_car_velocity()
+
     def get_level(self):
         return self.level
 

@@ -9,18 +9,6 @@ from level import Level
 class Engine():
     def __init__(self):
         self.screen = Screen()
-        # self.screen.title('Keep your shell feeling well!')
-        # self.screen.bgcolor("black")
-        # self.screen.setup(width=600, height=600)
-        # self.screen.tracer(0)
-        #self.player = Player() - cannot call here and then not call again
-        # self.background_image = Background_Creator()
-        #self.car_manager = CarManager(self.screen) - cannot call here and then not call again
-        #self.level = Level() -cannot call here and then not call again
-        #self.scoreboard = Scoreboard() - cannot call here and then not call again
-        # self.scoreboard.print_level(self.level.get_level())
-        
-    def reset_screen(self):
         self.screen.title('Keep your shell feeling well!')
         self.screen.bgcolor("black")
         self.screen.setup(width=600, height=600)
@@ -31,6 +19,7 @@ class Engine():
         self.level = Level()
         self.scoreboard = Scoreboard()
         self.scoreboard.print_level(self.level.get_level())
+        
 
     def run(self):
         game_is_on = True
@@ -70,10 +59,13 @@ class Engine():
         user_input = 'yes'
         while user_input == 'yes':
             if user_input == 'yes':
-                self.screen.clear()
-                self.reset_screen()
+                #self.screen.clear()
+                self.player.reset()
+                self.level.reset()
+                self.scoreboard.print_level(self.level.level)
+                #self.reset_screen()
                 self.run()
-                user_input = self.screen.textinput(title = "One more time?", prompt = "Would you like to play again? Type 'yes' or 'no'".lower())
+                user_input = self.screen.textinput(title = "One more time?", prompt = "Would you like to play again? Type 'yes' or 'no'").lower()
 
             else:
                 #scoreboard.clear()
