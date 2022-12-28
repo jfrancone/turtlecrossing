@@ -13,10 +13,11 @@ class Scoreboard(Turtle):
         self.hideturtle()
         self.goto(POSITION)
 
-    def print_level(self, level):
+    def print_level(self, level, high_score):
         self.clear()
         self.goto(POSITION)
         self.write(f'Level: {level}', align=ALIGNMENT, font=FONT)
+        self.print_high_score(high_score)
 
     def game_over(self):
         self.goto(-10,0)
@@ -31,6 +32,10 @@ class Scoreboard(Turtle):
         self.write(f'You beat your high score!🏅', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 15, "bold"))
         self.color('white')
         self.write(f'You beat your high score!🏅', move = False, align = ALIGNMENT, font = ("Deja Vu Sans Mono", 15, "normal"))
+
+    def print_high_score(self, high_score):
+        self.goto(-240,250)
+        self.write(f'High Score: {high_score}', align=ALIGNMENT, font= ("Courier", 10, "normal") )
 
     def end_message(self, level):
         self.goto(POSITION)

@@ -18,7 +18,7 @@ class Engine():
         self.car_manager = CarManager(self.screen)
         self.level = Level()
         self.scoreboard = Scoreboard()
-        self.scoreboard.print_level(self.level.get_level())
+        self.scoreboard.print_level(self.level.get_level(), self.level.best_score)
         
 
     def run(self):
@@ -45,7 +45,7 @@ class Engine():
             if self.player.ycor() >= 235:
                 self.player.reset()
                 self.level.increment_level()
-                self.scoreboard.print_level(self.level.get_level())
+                self.scoreboard.print_level(self.level.get_level(), self.level.best_score)
 
         self.scoreboard.game_over()
         if self.level.level > self.level.best_score:
@@ -60,7 +60,8 @@ class Engine():
             if user_input == 'yes':
                 self.player.reset()
                 self.level.reset()
-                self.scoreboard.print_level(self.level.level)
+                self.scoreboard.print_level(self.level.level, self.level.best_score)
+                #self.scoreboard.print_high_score(self.level.best_score)
                 self.run()
                 user_input = self.screen.textinput(title = "One more time?", prompt = "Would you like to play again? Type 'yes' or 'no'").lower()
 
