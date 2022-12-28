@@ -48,10 +48,10 @@ class Engine():
                 self.scoreboard.print_level(self.level.get_level())
 
         self.scoreboard.game_over()
-        time.sleep(2)
         if self.level.level > self.level.best_score:
             self.level.best_score = self.level.level
             self.scoreboard.beat_high_score()
+        time.sleep(2)
         
 
     def main_loop(self):
